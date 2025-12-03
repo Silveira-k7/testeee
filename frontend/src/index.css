@@ -6,10 +6,31 @@
 }
 
 body {
-  @apply bg-light text-gray-900;
+  @apply bg-indigo-50 text-gray-900;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Animação de gradiente para fundos */
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.gradient-animated {
+  background: linear-gradient(-45deg, #2563EB, #3B82F6, #8B5CF6, #A855F7);
+  background-size: 400% 400%;
+  animation: gradient-shift 15s ease infinite;
 }
 
 /* Animações suaves para hover */

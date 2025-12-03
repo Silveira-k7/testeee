@@ -8,23 +8,23 @@ const LandingPage = () => {
             <header className="bg-white/80 backdrop-blur-sm shadow-sm sticky top-0 z-50">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
                     <div className="flex items-center space-x-2">
-                        <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center">
+                        <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center">
                             <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                             </svg>
                         </div>
-                        <h1 className="text-2xl font-bold text-gray-900">ConsultoriaApp</h1>
+                        <h1 className="text-2xl font-bold text-gray-900">NextWork</h1>
                     </div>
                     <div className="flex items-center space-x-4">
                         <Link
                             to="/login"
-                            className="text-gray-700 font-medium hover:text-primary transition-colors"
+                            className="text-gray-700 font-medium hover:text-blue-600 transition-colors"
                         >
                             Entrar
                         </Link>
                         <Link
                             to="/register"
-                            className="bg-primary text-white px-6 py-2.5 rounded-xl font-semibold hover:bg-blue-700 btn-primary shadow-md"
+                            className="bg-blue-600 text-white px-6 py-2.5 rounded-xl font-semibold hover:bg-blue-700 btn-primary shadow-md"
                         >
                             Começar Agora
                         </Link>
@@ -34,7 +34,7 @@ const LandingPage = () => {
 
             {/* Hero Section */}
             <main className="flex-grow">
-                <div className="relative overflow-hidden bg-gradient-to-br from-primary via-blue-600 to-blue-700 py-24 sm:py-32">
+                <div className="relative overflow-hidden gradient-animated py-24 sm:py-32">
                     <div className="absolute inset-0 bg-grid-white/[0.05] bg-[size:20px_20px]" />
                     <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                         <h2 className="text-5xl sm:text-6xl font-extrabold text-white mb-6 leading-tight">
@@ -47,7 +47,7 @@ const LandingPage = () => {
                         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                             <Link
                                 to="/register"
-                                className="bg-white text-primary px-8 py-4 rounded-xl text-lg font-bold hover:bg-blue-50 btn-primary shadow-xl w-full sm:w-auto"
+                                className="bg-white text-blue-600 px-8 py-4 rounded-xl text-lg font-bold hover:bg-blue-50 btn-primary shadow-xl w-full sm:w-auto"
                             >
                                 Começar Agora
                             </Link>
@@ -106,7 +106,7 @@ const LandingPage = () => {
                 </div>
 
                 {/* CTA Section */}
-                <div className="bg-gradient-to-r from-primary via-blue-600 to-purple-600 py-16 mx-4 sm:mx-8 rounded-3xl mb-20 shadow-xl">
+                <div className="gradient-animated py-16 mx-4 sm:mx-8 rounded-3xl mb-20 shadow-xl">
                     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                         <h3 className="text-3xl sm:text-4xl font-bold text-white mb-4">
                             Pronto para Crescer?
@@ -116,7 +116,7 @@ const LandingPage = () => {
                         </p>
                         <Link
                             to="/register"
-                            className="inline-block bg-white text-primary px-10 py-4 rounded-xl text-lg font-bold hover:bg-blue-50 btn-primary shadow-2xl"
+                            className="inline-block bg-white text-blue-600 px-10 py-4 rounded-xl text-lg font-bold hover:bg-blue-50 btn-primary shadow-2xl"
                         >
                             Cadastre-se Gratuitamente
                         </Link>
@@ -127,7 +127,7 @@ const LandingPage = () => {
             {/* Footer */}
             <footer className="bg-dark text-white py-12">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <p className="text-gray-300">© 2025 ConsultoriaApp. Todos os direitos reservados.</p>
+                    <p className="text-gray-300">© 2025 NextWork. Todos os direitos reservados.</p>
                 </div>
             </footer>
         </div>

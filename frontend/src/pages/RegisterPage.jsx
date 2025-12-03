@@ -138,7 +138,7 @@ const RegisterPage = () => {
 
                     <button
                         type="submit"
-                        className="w-full bg-primary text-white py-3.5 rounded-xl font-bold text-lg hover:bg-blue-700 btn-primary shadow-lg mt-2"
+                        className="w-full bg-blue-600 text-white py-3.5 rounded-xl font-bold text-lg hover:bg-blue-700 btn-primary shadow-lg mt-2"
                     >
                         Criar Conta
                     </button>
@@ -148,7 +148,7 @@ const RegisterPage = () => {
                 <div className="mt-6 text-center">
                     <p className="text-gray-600">
                         Já tem uma conta?{' '}
-                        <Link to="/login" className="text-primary font-bold hover:underline">
+                        <Link to="/login" className="text-blue-600 font-bold hover:underline">
                             Fazer Login
                         </Link>
                     </p>
