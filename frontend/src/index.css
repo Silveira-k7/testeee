@@ -1,0 +1,35 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+* {
+  transition: all 0.2s ease;
+}
+
+body {
+  @apply bg-light text-gray-900;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Animações suaves para hover */
+.card-hover {
+  @apply transition-all duration-300 ease-in-out;
+}
+
+.card-hover:hover {
+  @apply transform -translate-y-1;
+}
+
+/* Botões com efeito premium */
+.btn-primary {
+  @apply transition-all duration-200 ease-in-out;
+}
+
+.btn-primary:hover {
+  @apply transform scale-105 shadow-lg;
+}
+
+.btn-primary:active {
+  @apply transform scale-100;
+}
