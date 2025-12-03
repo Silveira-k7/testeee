@@ -35,6 +35,8 @@ spring.jpa.hibernate.ddl-auto=update
 spring.h2.console.enabled=true
 ```
 
+**Nota**: O caminho `./data/consultoria` é relativo ao diretório `backend` (onde a aplicação é executada).
+
 ### 2. Arquivos Uploadados
 **Localização**: `./backend/uploads/`
 
@@ -49,7 +51,9 @@ Esta pasta contém todos os arquivos enviados pelos usuários e consultores:
 file.upload.dir=./uploads
 ```
 
-**Nota**: Os arquivos são armazenados com nomes únicos (UUID) para evitar conflitos.
+**Notas**: 
+- O caminho `./uploads` é relativo ao diretório `backend` (onde a aplicação é executada).
+- Os arquivos são armazenados com nomes únicos (UUID) para evitar conflitos.
 
 ## Console de Administração H2
 
@@ -176,12 +180,20 @@ Mensagens do chat entre usuários e consultores.
 ### Backup do Banco de Dados
 Para fazer backup do banco de dados, copie o arquivo:
 ```bash
+# Crie o diretório de backup se não existir
+mkdir -p ./backup
+
+# Copie o arquivo do banco de dados
 cp ./backend/data/consultoria.mv.db ./backup/consultoria_backup_$(date +%Y%m%d).mv.db
 ```
 
 ### Backup dos Arquivos
 Para fazer backup dos arquivos uploadados:
 ```bash
+# Crie o diretório de backup se não existir
+mkdir -p ./backup
+
+# Copie os arquivos uploadados
 cp -r ./backend/uploads ./backup/uploads_backup_$(date +%Y%m%d)
 ```
 
