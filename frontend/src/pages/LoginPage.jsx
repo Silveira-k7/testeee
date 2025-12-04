@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import authService from '../services/authService';
 
 const LoginPage = () => {
     const navigate = useNavigate();
@@ -7,29 +8,33 @@ const LoginPage = () => {
         email: '',
         password: ''
     });
+    const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        setError('');
+        setLoading(true);
 
-        // Mock authentication
-        const mockUser = {
-            name: formData.email.split('@')[0],
-            email: formData.email,
-            role: formData.email.includes('consultant') ? 'CONSULTANT' : 'USER'
-        };
+        try {
+            const response = await authService.login(formData.email, formData.password);
 
-        localStorage.setItem('user', JSON.stringify(mockUser));
-
-        if (mockUser.role === 'CONSULTANT') {
-            navigate('/consultant/dashboard');
-        } else {
-            navigate('/user/dashboard');
+            // Redirect based on role
+            if (response.role === 'CONSULTANT') {
+                navigate('/consultant/dashboard');
+            } else {
+                navigate('/user/dashboard');
+            }
+        } catch (err) {
+            setError(err.response?.data?.error || 'Erro ao fazer login. Verifique suas credenciais.');
+        } finally {
+            setLoading(false);
         }
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-light via-blue-50 to-indigo-100 py-12 px-4 sm:px-6 lg:px-8">
-            <div className="bg-white p-10 rounded-2xl shadow-soft w-full max-w-md">
+        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-light via-blue-50 to-indigo-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-12 px-4 sm:px-6 lg:px-8 transition-colors duration-300">
+            <div className="bg-white dark:bg-gray-800 p-10 rounded-2xl shadow-soft dark:shadow-none border border-gray-100 dark:border-gray-700 w-full max-w-md transition-all duration-300">
                 {/* Logo/Brand */}
                 <div className="flex justify-center mb-6">
                     <div className="w-16 h-16 bg-gradient-to-br from-primary to-blue-600 rounded-2xl flex items-center justify-center shadow-lg">
@@ -41,64 +46,61 @@ const LoginPage = () => {
 
                 {/* Title */}
                 <div className="text-center mb-8">
-                    <h2 className="text-3xl font-bold text-gray-900 mb-2">Entrar</h2>
-                    <p className="text-gray-600">Bem-vindo de volta! Entre para continuar</p>
+                    <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Entrar</h2>
+                    <p className="text-gray-600 dark:text-gray-400">Bem-vindo de volta! Entre para continuar</p>
                 </div>
+
+                {/* Error Message */}
+                {error && (
+                    <div className="mb-4 p-3 bg-red-100 dark:bg-red-900/30 border border-red-400 dark:border-red-800 text-red-700 dark:text-red-300 rounded-lg">
+                        {error}
+                    </div>
+                )}
 
                 {/* Form */}
                 <form onSubmit={handleSubmit} className="space-y-5">
                     <div>
-                        <label className="block text-gray-700 font-semibold mb-2">Email</label>
+                        <label className="block text-gray-700 dark:text-gray-300 font-semibold mb-2">Email</label>
                         <input
                             type="email"
-                            className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none"
+                            className="w-full px-4 py-3 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-xl text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none"
                             placeholder="seu@email.com"
                             value={formData.email}
                             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                             required
+                            disabled={loading}
                         />
                     </div>
 
                     <div>
-                        <label className="block text-gray-700 font-semibold mb-2">Senha</label>
+                        <label className="block text-gray-700 dark:text-gray-300 font-semibold mb-2">Senha</label>
                         <input
                             type="password"
-                            className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none"
+                            className="w-full px-4 py-3 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-xl text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none"
                             placeholder="••••••••"
                             value={formData.password}
                             onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                             required
+                            disabled={loading}
                         />
                     </div>
 
                     <button
                         type="submit"
-                        className="w-full bg-blue-600 text-white py-3.5 rounded-xl font-bold text-lg hover:bg-blue-700 btn-primary shadow-lg mt-6"
+                        className="w-full bg-blue-600 text-white py-3.5 rounded-xl font-bold text-lg hover:bg-blue-700 btn-primary shadow-lg mt-6 disabled:opacity-50 disabled:cursor-not-allowed"
+                        disabled={loading}
                     >
-                        Entrar
+                        {loading ? 'Entrando...' : 'Entrar'}
                     </button>
                 </form>
 
                 {/* Signup Link */}
                 <div className="mt-6 text-center">
-                    <p className="text-gray-600">
+                    <p className="text-gray-600 dark:text-gray-400">
                         Não tem uma conta?{' '}
-                        <Link to="/register" className="text-blue-600 font-bold hover:underline">
+                        <Link to="/register" className="text-blue-600 dark:text-blue-400 font-bold hover:underline">
                             Criar conta
                         </Link>
-                    </p>
-                </div>
-
-                {/* Test Hint */}
-                <div className="mt-6 p-4 bg-blue-50 border border-blue-100 rounded-xl">
-                    <p className="text-sm text-gray-700 font-semibold flex items-center">
-                        <svg className="w-5 h-5 text-blue-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                            <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
-                        </svg>
-                        Dica para testar
-                    </p>
-                    <p className="text-sm text-gray-600 mt-1 ml-7">
-                        Use email com "consult" para entrar como consultor (ex: consult@test.com)
                     </p>
                 </div>
             </div>

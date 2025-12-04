@@ -2,6 +2,7 @@ package com.consultoria.app.model;
 
 import javax.persistence.*;
 import lombok.Data;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "users")
@@ -24,6 +25,20 @@ public class User {
     private String profilePhotoUrl;
     private String company; // For users
     private String bio;
+
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
+
+    @PrePersist
+    protected void onCreate() {
+        createdAt = LocalDateTime.now();
+        updatedAt = LocalDateTime.now();
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        updatedAt = LocalDateTime.now();
+    }
 
     public enum Role {
         USER, CONSULTANT
