@@ -1,16 +1,16 @@
 # Sistema de Consultoria - Guia Rápido
 
-## ✅ Sistema Funcionando!
+##  Sistema Funcionando!
 
 Backend e frontend estão rodando corretamente.
 
-## 🚀 URLs de Acesso
+##  URLs de Acesso
 
 - **Frontend**: http://localhost:5173
 - **Backend API**: http://localhost:8080/api
 - **Console H2**: http://localhost:8080/h2-console
 
-## 📝 Como Usar
+##  Como Usar
 
 ### 1. Criar Conta
 1. Acessar http://localhost:5173
@@ -49,7 +49,7 @@ Backend e frontend estão rodando corretamente.
 3. Mensagens são salvas automaticamente
 4. Chat atualiza a cada 3 segundos
 
-## 🔐 Dados de Teste
+##  Dados de Teste
 
 Se quiser testar rapidamente, você pode criar:
 
@@ -73,7 +73,7 @@ Para acessar o console H2:
 - Username: `sa`
 - Password: (deixar em branco)
 
-## 🐛 Solução de Problemas
+##  Solução de Problemas
 
 ### Backend não conecta
 - Verificar se está rodando: `mvn spring-boot:run` no diretório `backend`
@@ -88,21 +88,21 @@ Para acessar o console H2:
 - Fazer logout e login novamente
 - Token expira em 24 horas
 
-## 📚 Documentação Completa
+##  Documentação Completa
 
 Consulte os arquivos:
 - `api_documentation.md` - Todas as rotas da API
 - `walkthrough.md` - Guia completo de funcionalidades
 
-## 🎉 Funcionalidades Implementadas
+##  Funcionalidades Implementadas
 
-- ✅ Autenticação JWT real
-- ✅ Registro e login
-- ✅ CRUD de projetos
-- ✅ Histórico de status
-- ✅ Chat persistente
-- ✅ Dashboard com estatísticas
-- ✅ Proteção de rotas
+-  Autenticação JWT real
+-  Registro e login
+-  CRUD de projetos
+-  Histórico de status
+-  Chat persistente
+-  Dashboard com estatísticas
+-  Proteção de rotas
 
 ---
 
