@@ -106,4 +106,4 @@ Consulte os arquivos:
 
 ---
 
-**Desenvolvido com sucesso! 🚀**
+**By Silveira**
